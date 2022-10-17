@@ -217,6 +217,7 @@ body{
     position: absolute;
     top: 41vw;
     left: 45vw;
+     width: 23vw;
 }
 #end{
     background-image: url(./img/endscreen.png);
