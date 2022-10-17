@@ -1,0 +1,242 @@
+*{
+    margin:0;
+    padding:0
+}
+html{
+    height:100vh;
+}
+body{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    background-color: #524d4d;
+}
+#game{
+    background-image: url(./img/game\ mining.jpg);
+    background-size: cover;
+    width: 100vw;
+    height: 54vw;
+    overflow: hidden;
+    position: absolute;
+    aspect-ratio: auto 16 / 9;
+    display: none;
+}
+
+#crane{
+    display: flex;
+    position: absolute;
+    left: 52.7vw;
+    top: 12vw;
+    flex-direction: column;
+    align-items: center;
+    animation: rot 3000ms linear infinite;
+    transform-origin: top center;
+    max-width: 2vw;
+
+}
+#goldtexts{
+    position: absolute;
+    top: 2.85vw;
+    font-size: 1.9vw;
+    left: 10vw;
+    font-family: system-ui;
+    color: #c79e09;
+    font-weight: 600;
+}
+#silvertexts{
+    position: absolute;
+    top: 2.85vw;
+    font-size: 1.9vw;
+    left: 26vw;
+    font-family: system-ui;
+    color: #524d4d;
+}
+#wire{
+    display: block;
+    background-color: #504d4d;
+    width: 0.25vw;
+    height: 0.5vw;
+}
+
+@keyframes rot {
+    0%{rotate: 0deg;}
+    30%{rotate: 73deg;}
+    60%{rotate: 0deg;}
+    80%{rotate: -73deg;}
+    100%{rotate: 0deg;}
+}
+.gold1{
+    width: 10vw;
+    position: absolute;
+    top: 39vw;
+    left: 9vw;
+}
+.gold2{
+    width: 4vw;
+    position: absolute;
+    top: 31vw;
+    left: 9vw;
+}
+.gold3{
+    width: 5vw;
+    position: absolute;
+    top: 39vw;
+    left: 33vw;
+}
+.gold4{
+    width: 2vw;
+    position: absolute;
+    top: 26vw;
+    left: 72vw;
+}
+.gold5{
+    width: 3vw;
+    position: absolute;
+    top: 44vw;
+    left: 82vw;
+}
+.silver1{
+    width: 12vw;
+    position: absolute;
+    top: 27vw;
+    left: 19vw;
+}
+.silver2{
+    width: 13vw;
+    position: absolute;
+    top: 36vw;
+    left: 43vw;
+}
+.silver3{
+    width: 6vw;
+    position: absolute;
+    top: 25vw;
+    left: 61vw;
+}
+.silver4{
+    width: 5vw;
+    position: absolute;
+    top: 18vw;
+    left: 66vw;
+}
+.silver5{
+    width: 8vw;
+    position: absolute;
+    top: 37vw;
+    left: 68vw;
+}
+.gold6{
+    position: absolute;
+    width: 13vw;
+    right: 4vw;
+    top: 27vw;
+}
+
+@keyframes go{
+    50%{
+        height: 40.5vw;
+    }
+    100%{
+    height: 0.5vw;
+    }
+}
+@keyframes gol{
+    50%{
+        height: 52.5vw;
+    }
+    100%{
+    height: 0.5vw;
+    }
+}
+@keyframes shak{
+    0%{translate: 0.18vw;}
+    30%{translate: 0vw}
+    70%{translate: -0.18vw}
+    100%{translate: 0vw}
+}
+#startd{
+    display: block;
+    width: 100vw;
+    position: absolute;
+    background-image: url(./img/startbg.png);
+    background-size: cover;
+    aspect-ratio: 16 / 9;
+}
+#quit{
+    position: absolute;
+    width: 19vw;
+    left: 38vw;
+    top: 23vw;
+    cursor: pointer;
+}
+#start{
+    position: absolute;
+    width: 19vw;
+    left: 38vw;
+    top: 16vw;
+    cursor: pointer;
+}
+#start:hover, #quit:hover{
+ scale: 1.03;
+}
+@keyframes goldgo{
+    100%{
+        top: 2.85vw;
+        left:10vw;
+        scale: 0.1;
+    }
+}
+
+#clock{
+    width: 4vw;
+    right: 20vw;
+    position: absolute;
+    box-shadow: 1px 1px 11vw 12vw #ffd7001c;
+    border-radius: 5vw;
+}
+#clockT{
+    position: absolute;
+    width: 2vw;
+    right: 16.4vw;
+    font-size: 2.2vw;
+    font-family: system-ui;
+    top: 0.5vw;
+    color: #b1a394;
+}
+#guide{
+    position: absolute;
+    top: 16vw;
+    left: 33vw;
+    width: 31vw;
+    display: none;
+}
+#again{
+    position: absolute;
+    top: 41vw;
+    left: 45vw;
+}
+#end{
+    background-image: url(./img/endscreen.png);
+    background-size: cover;
+    width: 100vw;
+    height: 54vw;
+    overflow: hidden;
+    position: absolute;
+    aspect-ratio: auto 16 / 9;
+    display: none;
+}
+#endt{
+    font-family: system-ui;
+    font-size: 3.5vw;
+    color: #563406;
+    position: absolute;
+    top: 26vw;
+    left: 47vw;
+
+}
+#again:hover {
+    scale: 1.05;
+}
