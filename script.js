@@ -82,7 +82,7 @@ document.body.onclick=(e)=>{
            clearInterval(chk)
            document.getElementsByClassName('gold2')[0].remove()
            var a = document.createElement('img')
-           a.setAttribute('style',"top: -3vw;left: 0;width:4vw; position: relative;")
+           a.setAttribute('style',"top: -1.8vw;left: 0;width:4vw; position: relative;")
            a.setAttribute('src',"./img/gold.png")
            document.getElementById('crane').append(a)
            reset(2000,h)  
@@ -91,7 +91,7 @@ document.body.onclick=(e)=>{
 
         if(rotc<59 && rotc>46 && document.getElementsByClassName('silver1')[0] != null){
             itempick=true
-            if(h>(31*vw)&& h<(33*vw)){
+            if(h>(29*vw)&& h<(31*vw)){
                clearInterval(chk)
                document.getElementsByClassName('silver1')[0].remove()
                var a = document.createElement('img')
@@ -104,7 +104,7 @@ document.body.onclick=(e)=>{
 
             if(rotc<55 && rotc>46&& document.getElementsByClassName('gold1')[0] != null){
                 itempick=true
-                if(h>(45*vw)&& h<(47*vw)){
+                if(h>(43*vw)&& h<(45*vw)){
                    clearInterval(chk)
                    document.getElementsByClassName('gold1')[0].remove()
                    var a = document.createElement('img')
