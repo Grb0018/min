@@ -18,11 +18,11 @@ body{
     background-image: url(./img/game\ mining.jpg);
     background-size: cover;
     width: 100vw;
-    height: 54vw;
+    height: 42vw;
     overflow: hidden;
     position: absolute;
-    aspect-ratio: auto 16 / 9;
     display: none;
+    height: 47vw;
 }
 
 #crane{
@@ -71,7 +71,7 @@ body{
 .gold1{
     width: 10vw;
     position: absolute;
-    top: 39vw;
+    top: 36vw;
     left: 9vw;
 }
 .gold2{
@@ -107,7 +107,7 @@ body{
 .silver2{
     width: 13vw;
     position: absolute;
-    top: 36vw;
+    top: 33vw;
     left: 43vw;
 }
 .silver3{
@@ -217,7 +217,7 @@ body{
     position: absolute;
     top: 41vw;
     left: 45vw;
-     width: 23vw;
+    width: 23vw;
 }
 #end{
     background-image: url(./img/endscreen.png);
