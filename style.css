@@ -171,6 +171,7 @@ body{
     left: 38vw;
     top: 23vw;
     cursor: pointer;
+    transition: 0.5s;
 }
 #start{
     position: absolute;
@@ -178,6 +179,7 @@ body{
     left: 38vw;
     top: 16vw;
     cursor: pointer;
+    transition: 0.5s;
 }
 #start:hover, #quit:hover{
  scale: 1.03;
@@ -216,7 +218,7 @@ body{
 #again{
     position: absolute;
     top: 41vw;
-    left: 45vw;
+    left: 43.5vw;
     width: 23vw;
 }
 #end{
@@ -240,4 +242,25 @@ body{
 }
 #again:hover {
     scale: 1.05;
+}
+#sound{
+    display: block;
+    background-color: transparent;
+    width: 4vw;
+    height: 4vw;
+    position: absolute;
+    right: 0.75vw;
+    top: 0.62vw;
+}
+#soundt{
+    display: none;
+    color: #c79e09;
+    position: absolute;
+    font-size: 4vw;
+    top: 23vw;
+    left: 37vw;
+    font-family: cursive;
+    box-shadow: 0px 0px 20vw;
+    background-color: #443b24;
+    border-radius: 20vw;
 }
