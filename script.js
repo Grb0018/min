@@ -11,6 +11,8 @@ $(window).on("orientationchange", function( event ) {
     window.location.reload()
   });
 
+window.ondragstart = function() { return false; } 
+
 function chktotal(){
     if($('#goldtext').text() >=3 && $('#silvertext').text() >=3){
         clearInterval(timecount);
