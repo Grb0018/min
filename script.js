@@ -1,11 +1,15 @@
 const allg = document.getElementsByClassName('gold')
 const alls = document.getElementsByClassName('silver')
-const vw = window.innerWidth/100;
+var vw = window.innerWidth/100;
 var itempick=false;
 var chk;
 var down=false;
 var timecount;
+var sound=true;
 
+$(window).on("orientationchange", function( event ) {
+    window.location.reload()
+  });
 
 function chktotal(){
     if($('#goldtext').text() >=3 && $('#silvertext').text() >=3){
@@ -20,8 +24,6 @@ function chktotal(){
             location.reload()
         }
     }
-    
-
 }
 
 function reset(x,y){
@@ -53,184 +55,208 @@ setTimeout(()=>{$('#silvertext').css('box-shadow','none')},2000)
 }
 
 document.body.onclick=(e)=>{
+    if(e.target==document.getElementById('sound')){
+        if(sound==true){
+            sound=false;
+            $('#soundt').fadeIn()
+            $('#soundt').text('Sound Off')
+            $('#soundt').fadeOut('2000')
+          var alls =   document.querySelectorAll('audio');
+          for (let i = 0; i < alls.length; i++) {
+              alls[i].pause();
+              alls[i].muted=true
+          }
+        }else{
+            sound=true;
+            $('#soundt').fadeIn()
+            $('#soundt').text('Sound On')
+            $('#soundt').fadeOut('2000')
+            var alls =   document.querySelectorAll('audio');
+            for (let i = 0; i < alls.length; i++) {
+                alls[i].currentTime='0';
+                alls[i].muted=false
+            }
+            document.getElementById('bgm').play()
     
-    if(down==true){
-        document.getElementById('cranem').currentTime = '0'
-        document.getElementById('cranem').play()
-       
-        down=false;
-    var rot = parseInt($('#crane').css('rotate'))
-    $('#crane').css({
-        animation:'none',
-        rotate: $('#crane').css('rotate')
-    })
-    if(rot>35 || rot<0){
-        $('#wire').css('animation','gol 4000ms linear')
+        }
     }else{
-        $('#wire').css('animation','go 4000ms linear')
-    }
+        if(down==true){
+            document.getElementById('cranem').currentTime = '0'
+            document.getElementById('cranem').play()
+            down=false;
+        var rot = parseInt($('#crane').css('rotate'))
+        $('#crane').css({
+            animation:'none',
+            rotate: $('#crane').css('rotate')
+        })
+        if(rot>35 || rot<0){
+            $('#wire').css('animation','gol 4000ms linear')
+        }else{
+            $('#wire').css('animation','go 4000ms linear')
+        }
+        
     
-
-     chk = setInterval(()=>{
-       var rotc = parseInt($('#crane').css('rotate'))
-       var h = parseInt($('#wire').css('height'))
-
-
-       if(rotc<66 && rotc>61 && document.getElementsByClassName('gold2')[0] != null){
-        itempick=true
-        if(h>(44.5*vw)&& h<(46.5*vw)){
-           clearInterval(chk)
-           document.getElementsByClassName('gold2')[0].remove()
-           var a = document.createElement('img')
-           a.setAttribute('style',"top: -1.8vw;left: 0;width:4vw; position: relative;")
-           a.setAttribute('src',"./img/gold.png")
-           document.getElementById('crane').append(a)
-           reset(2000,h)  
-           $('#game').css('animation','shak 52ms linear infinite')
-        }}
-
-        if(rotc<59 && rotc>46 && document.getElementsByClassName('silver1')[0] != null){
+         chk = setInterval(()=>{
+           var rotc = parseInt($('#crane').css('rotate'))
+           var h = parseInt($('#wire').css('height'))
+    
+    
+           if(rotc<66 && rotc>61 && document.getElementsByClassName('gold2')[0] != null){
             itempick=true
-            if(h>(29*vw)&& h<(31*vw)){
+            if(h>(44.5*vw)&& h<(46.5*vw)){
                clearInterval(chk)
-               document.getElementsByClassName('silver1')[0].remove()
+               document.getElementsByClassName('gold2')[0].remove()
                var a = document.createElement('img')
-               a.setAttribute('style',"top: -4vw;left: 0;width:12vw; position: relative;")
-               a.setAttribute('src',"./img/silver.png")
+               a.setAttribute('style',"top: -1.8vw;left: 0;width:4vw; position: relative;")
+               a.setAttribute('src',"./img/gold.png")
                document.getElementById('crane').append(a)
-               reset(3500,h) 
-               $('#game').css('animation','shak 52ms linear infinite')  
+               reset(2000,h)  
+               $('#game').css('animation','shak 52ms linear infinite')
             }}
-
-            if(rotc<55 && rotc>46&& document.getElementsByClassName('gold1')[0] != null){
+    
+            if(rotc<59 && rotc>46 && document.getElementsByClassName('silver1')[0] != null){
                 itempick=true
-                if(h>(43*vw)&& h<(45*vw)){
+                if(h>(29*vw)&& h<(31*vw)){
                    clearInterval(chk)
-                   document.getElementsByClassName('gold1')[0].remove()
+                   document.getElementsByClassName('silver1')[0].remove()
                    var a = document.createElement('img')
-                   a.setAttribute('style',"top: -3.5vw;left: 0;width:10vw; position: relative;")
-                   a.setAttribute('src',"./img/gold.png")
+                   a.setAttribute('style',"top: -4vw;left: 0;width:12vw; position: relative;")
+                   a.setAttribute('src',"./img/silver.png")
                    document.getElementById('crane').append(a)
-                   reset(3100,h)  
-                   $('#game').css('animation','shak 52ms linear infinite') 
+                   reset(3500,h) 
+                   $('#game').css('animation','shak 52ms linear infinite')  
                 }}
-                if(rotc<34 && rotc>27 && document.getElementsByClassName('gold3')[0] != null){
+    
+                if(rotc<55 && rotc>46&& document.getElementsByClassName('gold1')[0] != null){
                     itempick=true
-                    if(h>(31.5*vw)&& h<(33*vw)){
+                    if(h>(43*vw)&& h<(45*vw)){
                        clearInterval(chk)
-                       document.getElementsByClassName('gold3')[0].remove()
+                       document.getElementsByClassName('gold1')[0].remove()
                        var a = document.createElement('img')
-                       a.setAttribute('style',"top: -2.5vw;left: 0;width:5vw; position: relative;")
+                       a.setAttribute('style',"top: -3.5vw;left: 0;width:10vw; position: relative;")
                        a.setAttribute('src',"./img/gold.png")
                        document.getElementById('crane').append(a)
-                       reset(1500,h)  
+                       reset(3100,h)  
                        $('#game').css('animation','shak 52ms linear infinite') 
                     }}
-
-                    if(rotc<15 && rotc>-2 && document.getElementsByClassName('silver2')[0] != null){
+                    if(rotc<34 && rotc>27 && document.getElementsByClassName('gold3')[0] != null){
                         itempick=true
-                        if(h>(26.5*vw)&& h<(28*vw)){
+                        if(h>(31.5*vw)&& h<(33*vw)){
                            clearInterval(chk)
-                           document.getElementsByClassName('silver2')[0].remove()
+                           document.getElementsByClassName('gold3')[0].remove()
                            var a = document.createElement('img')
-                           a.setAttribute('style',"top: -4vw;left: 0;width:13vw; position: relative;")
-                           a.setAttribute('src',"./img/silver.png")
+                           a.setAttribute('style',"top: -2.5vw;left: 0;width:5vw; position: relative;")
+                           a.setAttribute('src',"./img/gold.png")
                            document.getElementById('crane').append(a)
-                           reset(3800,h)  
+                           reset(1500,h)  
                            $('#game').css('animation','shak 52ms linear infinite') 
-                        }}  
-                        if(rotc<-26 && rotc>-37){
+                        }}
+    
+                        if(rotc<15 && rotc>-2 && document.getElementsByClassName('silver2')[0] != null){
                             itempick=true
-                            if(h>(31.5*vw)&& h<(34*vw) && document.getElementsByClassName('silver5')[0] != null){
+                            if(h>(26.5*vw)&& h<(28*vw)){
                                clearInterval(chk)
-                               document.getElementsByClassName('silver5')[0].remove()
+                               document.getElementsByClassName('silver2')[0].remove()
                                var a = document.createElement('img')
-                               a.setAttribute('style',"top: -4vw;left: 0;width:8vw; position: relative;")
+                               a.setAttribute('style',"top: -4vw;left: 0;width:13vw; position: relative;")
                                a.setAttribute('src',"./img/silver.png")
                                document.getElementById('crane').append(a)
-                               reset(2600,h)  
+                               reset(3800,h)  
                                $('#game').css('animation','shak 52ms linear infinite') 
                             }}  
-                            if(rotc<-38 && rotc>-44 && document.getElementsByClassName('gold5')[0] != null){
+                            if(rotc<-26 && rotc>-37){
                                 itempick=true
-                                if(h>(42.5*vw)&& h<(44*vw)){
+                                if(h>(31.5*vw)&& h<(34*vw) && document.getElementsByClassName('silver5')[0] != null){
                                    clearInterval(chk)
-                                   document.getElementsByClassName('gold5')[0].remove()
+                                   document.getElementsByClassName('silver5')[0].remove()
                                    var a = document.createElement('img')
-                                   a.setAttribute('style',"top: -1.5vw;left: 0;width:3vw; position: relative;")
-                                   a.setAttribute('src',"./img/gold.png")
+                                   a.setAttribute('style',"top: -4vw;left: 0;width:8vw; position: relative;")
+                                   a.setAttribute('src',"./img/silver.png")
                                    document.getElementById('crane').append(a)
-                                   reset(1200,h)  
+                                   reset(2600,h)  
                                    $('#game').css('animation','shak 52ms linear infinite') 
                                 }}  
-
-                                if(rotc<-24 && rotc>-38 && document.getElementsByClassName('silver3')[0] != null){
+                                if(rotc<-38 && rotc>-44 && document.getElementsByClassName('gold5')[0] != null){
                                     itempick=true
-                                    if(h>(16.5*vw)&& h<(18*vw)){
+                                    if(h>(42.5*vw)&& h<(44*vw)){
                                        clearInterval(chk)
-                                       document.getElementsByClassName('silver3')[0].remove()
+                                       document.getElementsByClassName('gold5')[0].remove()
                                        var a = document.createElement('img')
-                                       a.setAttribute('style',"top: -2.5vw;left: 0;width:6vw; position: relative;")
-                                       a.setAttribute('src',"./img/silver.png")
+                                       a.setAttribute('style',"top: -1.5vw;left: 0;width:3vw; position: relative;")
+                                       a.setAttribute('src',"./img/gold.png")
                                        document.getElementById('crane').append(a)
-                                       reset(1200,h)   
-                                       $('#game').css('animation','shak 52ms linear infinite')
-                                    }} 
-                                    if(rotc<-52 && rotc>-64 && document.getElementsByClassName('silver4')[0] != null){
+                                       reset(1200,h)  
+                                       $('#game').css('animation','shak 52ms linear infinite') 
+                                    }}  
+    
+                                    if(rotc<-24 && rotc>-38 && document.getElementsByClassName('silver3')[0] != null){
                                         itempick=true
-                                        if(h>(14.5*vw)&& h<(16*vw)){
+                                        if(h>(16.5*vw)&& h<(18*vw)){
                                            clearInterval(chk)
-                                           document.getElementsByClassName('silver4')[0].remove()
+                                           document.getElementsByClassName('silver3')[0].remove()
                                            var a = document.createElement('img')
-                                           a.setAttribute('style',"top: -2vw;left: 0;width:5vw; position: relative;")
+                                           a.setAttribute('style',"top: -2.5vw;left: 0;width:6vw; position: relative;")
                                            a.setAttribute('src',"./img/silver.png")
                                            document.getElementById('crane').append(a)
-                                           reset(600,h)  
-                                           $('#game').css('animation','shak 52ms linear infinite') 
-                                        }}
-                                        if(rotc<-49 && rotc>-54 && document.getElementsByClassName('gold4')[0] != null){
+                                           reset(1200,h)   
+                                           $('#game').css('animation','shak 52ms linear infinite')
+                                        }} 
+                                        if(rotc<-52 && rotc>-64 && document.getElementsByClassName('silver4')[0] != null){
                                             itempick=true
-                                            if(h>(22.5*vw)&& h<(24*vw)){ 
-                                                    clearInterval(chk)
-                                                    document.getElementsByClassName('gold4')[0].remove()
-                                                    var a = document.createElement('img')
-                                                    a.setAttribute('style',"top: -1vw;left: 0;width:2vw; position: relative;")
-                                                    a.setAttribute('src',"./img/gold.png")
-                                                    document.getElementById('crane').append(a)
-                                                    reset(500,h)    
-                                                    $('#game').css('animation','shak 52ms linear infinite')                     
+                                            if(h>(14.5*vw)&& h<(16*vw)){
+                                               clearInterval(chk)
+                                               document.getElementsByClassName('silver4')[0].remove()
+                                               var a = document.createElement('img')
+                                               a.setAttribute('style',"top: -2vw;left: 0;width:5vw; position: relative;")
+                                               a.setAttribute('src',"./img/silver.png")
+                                               document.getElementById('crane').append(a)
+                                               reset(600,h)  
+                                               $('#game').css('animation','shak 52ms linear infinite') 
                                             }}
-                                            if(rotc<-50 && rotc>-64 && document.getElementsByClassName('gold6')[0] != null){
+                                            if(rotc<-49 && rotc>-54 && document.getElementsByClassName('gold4')[0] != null){
                                                 itempick=true
-                                                if(h>(38.5*vw)&& h<(40*vw)){ 
+                                                if(h>(22.5*vw)&& h<(24*vw)){ 
                                                         clearInterval(chk)
-                                                        document.getElementsByClassName('gold6')[0].remove()
+                                                        document.getElementsByClassName('gold4')[0].remove()
                                                         var a = document.createElement('img')
-                                                        a.setAttribute('style',"top: -4vw;left: 0;width:13vw; position: relative;")
+                                                        a.setAttribute('style',"top: -1vw;left: 0;width:2vw; position: relative;")
                                                         a.setAttribute('src',"./img/gold.png")
                                                         document.getElementById('crane').append(a)
-                                                        reset(3000,h)    
+                                                        reset(500,h)    
                                                         $('#game').css('animation','shak 52ms linear infinite')                     
                                                 }}
-
-    })
-
-
-    setTimeout(()=>{
-        if(itempick==false){
-            setTimeout(()=>{
-                itempick=false
-            console.log('res')
-            down=true
-            clearInterval(chk)
-            $('#crane').css({
-             animation:'rot 3000ms linear infinite'})
-             $('#wire').css('animation','none')
-             document.getElementById('cranem').pause()
-            },3000)
-        }
-    },1000)
-}
+                                                if(rotc<-50 && rotc>-64 && document.getElementsByClassName('gold6')[0] != null){
+                                                    itempick=true
+                                                    if(h>(38.5*vw)&& h<(40*vw)){ 
+                                                            clearInterval(chk)
+                                                            document.getElementsByClassName('gold6')[0].remove()
+                                                            var a = document.createElement('img')
+                                                            a.setAttribute('style',"top: -4vw;left: 0;width:13vw; position: relative;")
+                                                            a.setAttribute('src',"./img/gold.png")
+                                                            document.getElementById('crane').append(a)
+                                                            reset(3000,h)    
+                                                            $('#game').css('animation','shak 52ms linear infinite')                     
+                                                    }}
+    
+        })
+    
+    
+        setTimeout(()=>{
+            if(itempick==false){
+                setTimeout(()=>{
+                    itempick=false
+                console.log('res')
+                down=true
+                clearInterval(chk)
+                $('#crane').css({
+                 animation:'rot 3000ms linear infinite'})
+                 $('#wire').css('animation','none')
+                 document.getElementById('cranem').pause()
+                },3000)
+            }
+        },1000)
+    }
+    }
 }
 
 var elem = document.body;
